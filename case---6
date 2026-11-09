@@ -1,0 +1,44 @@
+n = int(input("Enter number of passengers: "))
+
+distance = float(input("Enter journey distance in km: "))
+travel_class = input("Enter class (Sleeper/AC): ").lower()
+
+if travel_class == "sleeper":
+    rate = 1
+    reservation = 20
+elif travel_class == "ac":
+    rate = 2
+    reservation = 50
+else:
+    print("Invalid class")
+    exit()
+
+total = 0
+
+for i in range(n):
+    print("\nPassenger", i + 1)
+    name = input("Enter passenger name: ")
+    age = int(input("Enter age: "))
+
+    fare = distance * rate
+
+    if age >= 60:
+        fare = fare * 0.80
+
+    fare = fare + reservation
+
+    print("Passenger:", name)
+    print("Ticket Fare:", fare)
+
+    total = total + fare
+
+print("\nTotal Reservation Amount:", total)
+
+cancel = input("Do you want to cancel tickets? (yes/no): ")
+
+if cancel.lower() == "yes":
+    penalty = total * 0.25
+    refund = total - penalty
+
+    print("Cancellation Penalty:", penalty)
+    print("Refund Amount:", refund)

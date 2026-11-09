@@ -1,0 +1,34 @@
+usage = float(input("Enter data usage in GB: "))
+budget = float(input("Enter your budget: "))
+
+plans = [
+    ["Basic", 199, 2, 28, 50],
+    ["Standard", 299, 3, 56, 30],
+    ["Premium", 499, 5, 84, 10]
+]
+
+eligible = []
+
+for plan in plans:
+    name, price, daily_data, validity, extra = plan
+
+    allowed_data = daily_data * validity
+
+    if usage > allowed_data:
+        excess = usage - allowed_data
+        total = price + excess * extra
+    else:
+        total = price
+
+    print("\nPlan:", name)
+    print("Total Cost:", total)
+
+    if total <= budget:
+        eligible.append([name, total])
+
+if eligible:
+    eligible.sort(key=lambda x: x[1])
+    print("\nMost Economical Plan:", eligible[0][0])
+    print("Total Cost:", eligible[0][1])
+else:
+    print("\nNo plan is available within your budget")

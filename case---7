@@ -1,0 +1,46 @@
+n = int(input("Enter number of products: "))
+
+total = 0
+
+for i in range(n):
+    print("\nProduct", i + 1)
+
+    name = input("Enter product name: ")
+    price = float(input("Enter price: "))
+    quantity = int(input("Enter quantity: "))
+    category = input("Enter category (food/electronics/other): ").lower()
+
+    amount = price * quantity
+
+    if category == "food":
+        tax = amount * 0.05
+    elif category == "electronics":
+        tax = amount * 0.18
+    else:
+        tax = amount * 0.12
+
+    subtotal = amount + tax
+
+    print("Product:", name)
+    print("Amount:", amount)
+    print("Tax:", tax)
+    print("Subtotal:", subtotal)
+
+    total = total + subtotal
+
+if total >= 5000:
+    discount = total * 0.10
+elif total >= 2000:
+    discount = total * 0.05
+else:
+    discount = 0
+
+if discount > 1000:
+    discount = 1000
+
+final = total - discount
+
+print("\nRETAIL INVOICE")
+print("Total Amount:", round(total, 2))
+print("Discount:", round(discount, 2))
+print("Final Bill:", round(final, 2))

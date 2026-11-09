@@ -1,0 +1,31 @@
+name = input("Enter employee name: ")
+
+basic = float(input("Enter basic salary: "))
+allowance = float(input("Enter allowances: "))
+overtime = float(input("Enter overtime amount: "))
+incentive = float(input("Enter incentives: "))
+
+gross = basic + allowance + overtime + incentive
+
+if gross <= 20000:
+    tax = gross * 0.05
+elif gross <= 50000:
+    tax = gross * 0.10
+else:
+    tax = gross * 0.15
+
+pf = basic * 0.12
+total_deduction = tax + pf
+net_salary = gross - total_deduction
+
+print("\nEMPLOYEE SALARY STATEMENT")
+print("Employee:", name)
+print("Basic Salary:", basic)
+print("Allowances:", allowance)
+print("Overtime:", overtime)
+print("Incentives:", incentive)
+print("Gross Salary:", gross)
+print("Tax:", tax)
+print("PF:", pf)
+print("Total Deduction:", total_deduction)
+print("Net Salary:", net_salary)
